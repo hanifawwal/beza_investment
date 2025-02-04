@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beza Investment - Job Application</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: linear-gradient(to right, #00416A, #E4E5E6);
+            padding: 20px;
+            color: white;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+            max-width: 450px;
+            margin: auto;
+            text-align: left;
+            backdrop-filter: blur(10px);
+        }
+        h1, h2, p {
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+        input, select {
+            width: 95%;
+            padding: 12px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.3);
+            font-size: 16px;
+            color: black;
+            transition: 0.3s;
+        }
+        input:focus, select:focus {
+            background: rgba(255, 255, 255, 0.6);
+            outline: none;
+        }
+        button {
+            width: 100%;
+            background: #00416A;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+        button:hover {
+            background: #002a4d;
+        }
+        .hidden {
+            display: none;
+        }
+        #container {
+            transition: opacity 1s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Welcome to Beza Investment</h1>
+    <h2>በዛ ኢንቨስትመንት እንኳን ደህና መጡ</h2>
+    <p>If you want to join our team and get a job, please provide your information.</p>
+
+    <h3>Salary: 8000 ETB</h3>
+    <label>Choose Job Type:</label>
+    <select required>
+        <option value="">Select</option>
+        <option value="Selling Product">Selling Product</option>
+        <option value="Office Work">Office Work</option>
+    </select>
+
+    <div id="container" class="container">
+        <form id="jobForm">
+            <label>First Name / ስም:</label>
+            <input type="text" required placeholder="Enter your first name">
+
+            <label>Last Name / የአባት ስም:</label>
+            <input type="text" required placeholder="Enter your last name">
+
+            <label>Grandfather's Name / የአያት ስም:</label>
+            <input type="text" required placeholder="Enter your grandfather's name">
+
+            <label>Age / እድሜ:</label>
+            <input type="number" required placeholder="Enter your age">
+
+            <label>Phone Number / ስልክ ቁጥር:</label>
+            <input type="text" required placeholder="Enter your phone number">
+
+            <label>Education Level / የትምህርት ደረጃ:</label>
+            <select required>
+                <option value="">Select</option>
+                <option value="PhD">PhD</option>
+                <option value="Masters">Masters</option>
+                <option value="Bachelor">Bachelor</option>
+                <option value="Other">Other</option>
+            </select>
+
+            <label>Are you a beginner in investment? / በኢንቨስትመንት አዲስ ነህ?</label>
+            <select required>
+                <option value="">Select</option>
+                <option value="Yes">Yes / አዎ</option>
+                <option value="No">No / አይ</option>
+            </select>
+
+            <label>Choose ID Document / መታወቂያ ይምረጡ:</label>
+            <select id="idType" required onchange="toggleIDUpload()">
+                <option value="">Select</option>
+                <option value="National ID">National ID</option>
+                <option value="Passport">Passport</option>
+                <option value="Kebele ID">Kebele ID</option>
+                <option value="Driving License">Driving License</option>
+                <option value="None">None</option>
+            </select>
+
+            <div id="idUploadSection" class="hidden">
+                <label>Upload ID Photo / የመታወቂያ ፎቶ ይጫኑ:</label>
+                <input type="file" accept="image/*">
+            </div>
+
+            <h3>Payment Information / የክፍያ መረጃ</h3>
+            <p>Send 200 Birr to Telebirr: <b>0996350347</b></p>
+            <p>እባኮትን 200 ብር ወደ ተሌብር ቁጥር <b>0996350347</b> ልከው።</p>
+
+            <label>Upload Payment Screenshot / የክፍያ ማሳያ ሰንጠረዥ አክሉ:</label>
+            <input type="file" accept="image/*" required>
+
+            <button type="submit">Submit / ላክ</button>
+        </form>
+    </div>
+
+    <script>
+        function toggleIDUpload() {
+            var idType = document.getElementById("idType").value;
+            var idUploadSection = document.getElementById("idUploadSection");
+            
+            if (idType === "None" || idType === "") {
+                idUploadSection.classList.add("hidden");
+            } else {
+                idUploadSection.classList.remove("hidden");
+            }
+        }
+
+        document.getElementById("jobForm").addEventListener("submit", function(event) {
+            event.preventDefault(); 
+            document.getElementById("container").style.opacity = "0";
+            setTimeout(() => {
+                document.getElementById("container").style.display = "none";
+                alert("Application submitted successfully! 🎉");
+                window.location.href = "waiting.html";
+            }, 1000);
+        });
+    </script>
+
+</body>
+</html>
